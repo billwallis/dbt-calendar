@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_yml_files.json
+---
+seeds:
+  - name: calendar
+    config:
+      column_types:
+        date_nk: date
+        date_id: integer
+        ordinal_date: integer
+        year_quarter: integer
+        year_month: integer
+        year_week: integer
+        year_number: integer
+        quarter_number: integer
+        month_number: integer
+        week_number: integer
+        day_of_year_number: integer
+        day_of_month_number: integer
+        day_of_week_number: integer
+        day_name: varchar
+        day_name_abbr: varchar
+        month_name: varchar
+        month_name_abbr: varchar
+        is_month_start: boolean
+        is_month_end: boolean
+        is_quarter_start: boolean
+        is_quarter_end: boolean
+        is_year_start: boolean
+        is_year_end: boolean
+        is_leap_year: boolean
+        is_day_weekday: boolean
+    columns:
+      - name: date_nk
+        data_tests: ["not_null", "unique"]
+      - name: date_id
+        data_tests: ["not_null", "unique"]
+      - name: ordinal_date
+        data_tests: ["not_null", "unique"]
+      - name: year_quarter
+        data_tests: ["not_null"]
+      - name: year_month
+        data_tests: ["not_null"]
+      - name: year_week
+        data_tests: ["not_null"]
+      - name: year_number
+        data_tests: ["not_null"]
+      - name: quarter_number
+        data_tests: ["not_null"]
+      - name: month_number
+        data_tests: ["not_null"]
+      - name: week_number
+        data_tests: ["not_null"]
+      - name: day_of_year_number
+        data_tests: ["not_null"]
+      - name: day_of_month_number
+        data_tests: ["not_null"]
+      - name: day_of_week_number
+        data_tests: ["not_null"]
+      - name: day_name
+        data_tests: ["not_null"]
+      - name: day_name_abbr
+        data_tests: ["not_null"]
+      - name: month_name
+        data_tests: ["not_null"]
+      - name: month_name_abbr
+        data_tests: ["not_null"]
+      - name: is_month_start
+        data_tests: ["not_null"]
+      - name: is_month_end
+        data_tests: ["not_null"]
+      - name: is_quarter_start
+        data_tests: ["not_null"]
+      - name: is_quarter_end
+        data_tests: ["not_null"]
+      - name: is_year_start
+        data_tests: ["not_null"]
+      - name: is_year_end
+        data_tests: ["not_null"]
+      - name: is_leap_year
+        data_tests: ["not_null"]
+      - name: is_day_weekday
+        data_tests: ["not_null"]
