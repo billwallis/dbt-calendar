@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_project-latest.json
+---
+name: dbt_calendar
+version: 0.0.0
+
+config-version: 2
+require-dbt-version: [">=1.10.0", "<3.0.0"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_modules", "dbt_packages"]
+macro-paths: ["macros"]
+log-path: "logs"
+
+quoting:
+  database: false
+  schema: false
+  identifier: false
+
+seeds:
+  dbt_calendar:
+    +schema: dbt_calendar

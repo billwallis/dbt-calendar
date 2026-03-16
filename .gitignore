@@ -1,3 +1,9 @@
+# dbt
+target/
+dbt_packages/
+logs/
+.user.yml
+
 # System files
 .DS_Store
 
@@ -87,7 +93,6 @@ docs/_build/
 
 # PyBuilder
 .pybuilder/
-target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
