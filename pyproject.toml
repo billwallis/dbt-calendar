@@ -36,6 +36,7 @@ envfile.optional = ".env"
 install.shell = """
     uv sync --refresh
     uv run pre-commit install --install-hooks
+    uv run dbt deps
 """
 upgrade.shell = """
     uv sync --refresh --upgrade
@@ -43,6 +44,13 @@ upgrade.shell = """
 """
 run = "uv run -m src.dbt_calendar"
 test = "uv run ./run_test.py"
+clean.shell = """
+    rm -rf integration_tests/dbt_packages/
+    rm -rf integration_tests/logs/
+    rm -rf integration_tests/target/
+    rm -rf integration_tests/tests.duckdb
+    rm -rf logs/
+"""
 
 [tool.poe.tasks.lint]
 control.expr = "sys.platform"

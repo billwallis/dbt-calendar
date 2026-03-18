@@ -1,6 +1,25 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_yml_files.json
 ---
 seeds:
+  - name: bank_holidays
+    config:
+      column_types:
+        date_nk: date
+        region: varchar
+        title: varchar
+        notes: varchar
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: ["date_nk", "region"]
+    columns:
+      - name: date_nk
+        data_tests:
+          - not_null
+          - relationships: {arguments: {to: ref("calendar"), field: date_nk}}
+      - {name: region,  data_tests: ["not_null"]}
+      - {name: title,   data_tests: ["not_null"]}
+      - {name: notes}
   - name: calendar
     config:
       column_types:
@@ -30,53 +49,28 @@ seeds:
         is_leap_year: boolean
         is_day_weekday: boolean
     columns:
-      - name: date_nk
-        data_tests: ["not_null", "unique"]
-      - name: date_id
-        data_tests: ["not_null", "unique"]
-      - name: ordinal_date
-        data_tests: ["not_null", "unique"]
-      - name: year_quarter
-        data_tests: ["not_null"]
-      - name: year_month
-        data_tests: ["not_null"]
-      - name: year_week
-        data_tests: ["not_null"]
-      - name: year_number
-        data_tests: ["not_null"]
-      - name: quarter_number
-        data_tests: ["not_null"]
-      - name: month_number
-        data_tests: ["not_null"]
-      - name: week_number
-        data_tests: ["not_null"]
-      - name: day_of_year_number
-        data_tests: ["not_null"]
-      - name: day_of_month_number
-        data_tests: ["not_null"]
-      - name: day_of_week_number
-        data_tests: ["not_null"]
-      - name: day_name
-        data_tests: ["not_null"]
-      - name: day_name_abbr
-        data_tests: ["not_null"]
-      - name: month_name
-        data_tests: ["not_null"]
-      - name: month_name_abbr
-        data_tests: ["not_null"]
-      - name: is_month_start
-        data_tests: ["not_null"]
-      - name: is_month_end
-        data_tests: ["not_null"]
-      - name: is_quarter_start
-        data_tests: ["not_null"]
-      - name: is_quarter_end
-        data_tests: ["not_null"]
-      - name: is_year_start
-        data_tests: ["not_null"]
-      - name: is_year_end
-        data_tests: ["not_null"]
-      - name: is_leap_year
-        data_tests: ["not_null"]
-      - name: is_day_weekday
-        data_tests: ["not_null"]
+      - {name: date_nk,             data_tests: ["not_null", "unique"]}
+      - {name: date_id,             data_tests: ["not_null", "unique"]}
+      - {name: ordinal_date,        data_tests: ["not_null", "unique"]}
+      - {name: year_quarter,        data_tests: ["not_null"]}
+      - {name: year_month,          data_tests: ["not_null"]}
+      - {name: year_week,           data_tests: ["not_null"]}
+      - {name: year_number,         data_tests: ["not_null"]}
+      - {name: quarter_number,      data_tests: ["not_null"]}
+      - {name: month_number,        data_tests: ["not_null"]}
+      - {name: week_number,         data_tests: ["not_null"]}
+      - {name: day_of_year_number,  data_tests: ["not_null"]}
+      - {name: day_of_month_number, data_tests: ["not_null"]}
+      - {name: day_of_week_number,  data_tests: ["not_null"]}
+      - {name: day_name,            data_tests: ["not_null"]}
+      - {name: day_name_abbr,       data_tests: ["not_null"]}
+      - {name: month_name,          data_tests: ["not_null"]}
+      - {name: month_name_abbr,     data_tests: ["not_null"]}
+      - {name: is_month_start,      data_tests: ["not_null"]}
+      - {name: is_month_end,        data_tests: ["not_null"]}
+      - {name: is_quarter_start,    data_tests: ["not_null"]}
+      - {name: is_quarter_end,      data_tests: ["not_null"]}
+      - {name: is_year_start,       data_tests: ["not_null"]}
+      - {name: is_year_end,         data_tests: ["not_null"]}
+      - {name: is_leap_year,        data_tests: ["not_null"]}
+      - {name: is_day_weekday,      data_tests: ["not_null"]}
