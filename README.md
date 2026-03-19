@@ -3,7 +3,6 @@
 [![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![tests](https://github.com/billwallis/dbt-calendar/actions/workflows/tests.yaml/badge.svg)](https://github.com/billwallis/dbt-calendar/actions/workflows/tests.yaml)
-
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/billwallis/dbt-calendar/main.svg)](https://results.pre-commit.ci/latest/github/billwallis/dbt-calendar/main)
 [![GitHub last commit](https://img.shields.io/github/last-commit/billwallis/dbt-calendar)](https://shields.io/badges/git-hub-last-commit)
 
@@ -24,7 +23,7 @@ Add to your `packages.yml`:
 ```yaml
 packages:
   - git: "https://github.com/billwallis/dbt-calendar"
-    revision: 0.0.1
+    revision: v0.0.1
 ```
 
 Run `dbt seed` to load the models. By default, the models will go into the `dbt_calendar` schema (or whatever dev equivalent you have configured). You can change the schema using the `+schema` parameter in the `dbt_project.yml` file's `seeds` config:
