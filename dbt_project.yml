@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_project-latest.json
 ---
 name: dbt_calendar
-version: 0.0.0
+version: 0.0.1
 
 config-version: 2
 require-dbt-version: [">=1.10.0", "<3.0.0"]
