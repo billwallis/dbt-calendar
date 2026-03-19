@@ -15,7 +15,41 @@
 
 A calendar data model for dbt projects.
 
-This is similar to [calogica/dbt-date](https://github.com/calogica/dbt-date), except the date attributes are primarily exposed as database objects rather than macros.
+This is similar to [godatadriven/dbt-date](https://github.com/godatadriven/dbt-date) (previously [calogica/dbt-date](https://github.com/calogica/dbt-date)), except the date attributes are primarily exposed as database objects rather than macros.
+
+## Models
+
+This package exposes the following models:
+
+<div align="center">
+  <a href="https://dbdiagram.io/home">
+    <img
+        src="docs/data-model.png"
+        alt="data model for dbt-calendar"
+        width=500
+    />
+  </a>
+</div>
+
+<details>
+<summary>Expand for corresponding <a href="https://dbml.dbdiagram.io/home">DBML</a></summary>
+
+```dbml
+Table calendar {
+  date_nk date [not null, primary key]
+}
+
+Table bank_holidays {
+  date_nk date [not null, ref: > calendar.date_nk]
+  region varchar [not null]
+
+  indexes {
+    (date_nk, region) [pk]
+  }
+}
+```
+
+</details>
 
 ## Contributing
 
