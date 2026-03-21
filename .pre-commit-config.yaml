@@ -2,7 +2,7 @@
 ---
 ci:
   autoupdate_schedule: quarterly
-  skip: ["identity", "uv-lock"]
+  skip: ["identity", "uv-lock", "check-dbt-project-version"]
 
 default_install_hook_types: ["pre-commit", "pre-push"]
 default_stages: ["pre-commit"]
@@ -45,13 +45,13 @@ repos:
         name: Validate pre-commit CI config
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.10.8
+    rev: 0.10.12
     hooks:
       - id: uv-lock
         name: Check that the lock file is up-to-date
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.5
+    rev: v0.15.7
     hooks:
       - id: ruff-check
         name: Lint Python code
@@ -60,10 +60,21 @@ repos:
         name: Format Python code
 
   - repo: https://github.com/billwallis/bills-hooks
-    rev: v0.0.8
+    rev: v0.0.10
     hooks:
+      - id: check-no-commit-comment
       - id: tidy-gitkeep
-        name: Remove redundant .gitkeep files
+  - repo: local
+    hooks:
+      - id: check-dbt-project-version
+        name: Check dbt project version
+        entry: >
+          check-dbt-project-version
+          --dbt-project-dir '.'
+          --python-project-name 'dbt-calendar'
+        language: unsupported
+        always_run: true
+        pass_filenames: false
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.37.0
