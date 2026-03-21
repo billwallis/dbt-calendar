@@ -17,6 +17,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "bills-hooks",
     "dbt-duckdb>=1.10.1",
     "poethepoet>=0.42.1",
     "pre-commit>=4.5.1",
@@ -26,6 +27,9 @@ dev = [
 [tool.uv]
 required-version = ">=0.8"
 default-groups = "all"
+
+[tool.uv.sources]
+bills-hooks = {git = "https://github.com/billwallis/bills-hooks", rev = "v0.0.10"}
 
 
 [tool.poe]

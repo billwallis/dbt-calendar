@@ -48,6 +48,14 @@ wheels = [
 ]
 
 [[package]]
+name = "bills-hooks"
+version = "0.0.10"
+source = { git = "https://github.com/billwallis/bills-hooks?rev=v0.0.10#18a779c3a7e090c816d7d0c3b1224189d53962c8" }
+dependencies = [
+    { name = "pyyaml" },
+]
+
+[[package]]
 name = "certifi"
 version = "2026.2.25"
 source = { registry = "https://pypi.org/simple" }
@@ -148,6 +156,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "bills-hooks" },
     { name = "dbt-duckdb" },
     { name = "poethepoet" },
     { name = "pre-commit" },
@@ -158,6 +167,7 @@ requires-dist = [{ name = "duckdb", specifier = ">=1.5.0" }]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "bills-hooks", git = "https://github.com/billwallis/bills-hooks?rev=v0.0.10" },
     { name = "dbt-duckdb", specifier = ">=1.10.1" },
     { name = "poethepoet", specifier = ">=0.42.1" },
     { name = "pre-commit", specifier = ">=4.5.1" },
