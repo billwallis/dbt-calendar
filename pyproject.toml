@@ -10,6 +10,7 @@ version = "0.0.1"
 description = "A calendar data model for dbt projects."
 authors = [{name = "billwallis"}]
 readme = "README.md"
+license-files = ["LICENSE"]
 requires-python = ">=3.13,<3.14"
 dependencies = [
     "duckdb>=1.5.0",
