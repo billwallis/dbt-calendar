@@ -12,6 +12,7 @@ from typing import Any
 
 from dbt.cli.main import dbtRunner
 
+# TODO: This is incompatible with dbt-core>=2.0.0
 # These are just for patching a dbt bug  (https://github.com/dbt-labs/dbt-core/issues/9719)
 from dbt.deps.local import LocalPinnedPackage
 from dbt.events.types import DepsCreatingLocalSymlink, DepsSymlinkNotAvailable
