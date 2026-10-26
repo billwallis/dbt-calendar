@@ -1,7 +1,6 @@
 <span align="center">
 
 [![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)](https://www.python.org/downloads/)
-[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![tests](https://github.com/billwallis/dbt-calendar/actions/workflows/tests.yaml/badge.svg)](https://github.com/billwallis/dbt-calendar/actions/workflows/tests.yaml)
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/billwallis/dbt-calendar/main.svg)](https://results.pre-commit.ci/latest/github/billwallis/dbt-calendar/main)
@@ -120,8 +119,9 @@ from date_spine
 
 ## Contributing
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and then install the dependencies:
+Install the dependencies:
 
 ```shell
-uvx --from poethepoet poe install
+pip install --editable . --group dev --group test
+pre-commit install --install-hooks
 ```
