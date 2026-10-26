@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_yml_files.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_yml_files-latest.json
 ---
 seeds:
   - name: bank_holidays
@@ -20,6 +20,7 @@ seeds:
       - {name: region,  data_tests: ["not_null"]}
       - {name: title,   data_tests: ["not_null"]}
       - {name: notes}
+
   - name: calendar
     config:
       column_types:
@@ -74,3 +75,23 @@ seeds:
       - {name: is_year_end,         data_tests: ["not_null"]}
       - {name: is_leap_year,        data_tests: ["not_null"]}
       - {name: is_day_weekday,      data_tests: ["not_null"]}
+
+  - name: daylight_savings
+    config:
+      column_types:
+        date_nk: date
+        region: varchar
+        title: varchar
+        notes: varchar
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: ["date_nk", "region"]
+    columns:
+      - name: date_nk
+        data_tests:
+          - not_null
+          - relationships: {arguments: {to: ref("calendar"), field: date_nk}}
+      - {name: region,  data_tests: ["not_null"]}
+      - {name: title,   data_tests: ["not_null"]}
+      - {name: notes}
